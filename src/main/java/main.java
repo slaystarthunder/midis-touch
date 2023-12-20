@@ -2,9 +2,9 @@ public class main {
 
 
 
-    private static void main(String[] args){
+    public static void main(String[] args){
 
-        SongGenerator.generateTrack(60, 0, 16);
+        SongGenerator.generateSong((byte) 60, (byte)0,(byte)16 );
 
 
 

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class SongGenerator/*(TrackGenerator?)*/ {
     /*What do we do?
 
@@ -54,94 +56,81 @@ public class SongGenerator/*(TrackGenerator?)*/ {
      */
 
 
-
-
-
-
-
-
-
-    public static Track[] generateSong(byte bpm, byte key, byte numberOfBars){
-
-
-
-
+    public static void generateSong(byte bpm, byte key, byte numberOfBars) {
 
 
     }
 
 
-    /**Makes a polyphonic (3) chord-progression as a Track-object
-     *
-     *
+    /**
+     * Makes a polyphonic (3) chord-progression as a Track-object
      *
      * @param bpm
      * @param key
      * @param numberOfBars
      */
-    private static Track makeChordTrack(byte bpm, byte key, byte numberOfBars){
+    private static byte[][][] makeChordTrack(byte bpm, byte key, byte numberOfBars) {
         /*Here each entry is a set interval from the basekey. Gives the notes of the scale*/
         /*0-3-4-0*/
-        byte[] majorChordProgression = {0,3,4,0};
-    byte[] scaleArray = {key, key+2, key+4, key+5,key+7,key+9,key+11};
-    byte[][][] midiSequenceArray = new byte[4][4][3];
-    byte currentKey = key;
-    byte third;
-    byte fifth;
+        byte[] majorChordProgression = {(byte) 0, (byte) 3, (byte) 4, (byte) 0};
+        byte[] scaleArray = {key, (byte) (key + 2), (byte) (key + 4), (byte) (key + 5), (byte) (key + 7), (byte) (key + 9), (byte) (key + 11)};
+        byte[][][] midiSequenceArray = new byte[4][4][3];
+        byte currentKey = key;
+        byte third;
+        byte fifth;
         byte rowCounter = 0;
         byte colCounter = 0;
-        for(byte k = 0 ; k < numberOfBars ; k++){
-     third = currentKey + 4;
-    third = (this.checkIfValid(scaleArray, third) ? third : currentKey + 3;
-    fifth = currentKey + 7;
-    fifth = (this.checkIfValid(scaleArray, fifth)) ? fifth : currentKey + 8;
-    midiSequenceArray[rowCounter][colCounter][k % 3];
-    currentKey += majorChordProgression[(k+1) % 4];
-    colCounter = (colCounter < 3) ? colCounter++ : colCounter ;
-    rowCounter = (colCounter == 3) ? rowCounter++ : rowCounter;
+        for (byte k = 0; k < numberOfBars; k++) {
+            third = (byte) (currentKey + 4);
+            third = (checkIfValid(scaleArray, third)) ? third : (byte) (currentKey + 3);
+            fifth = (byte) (currentKey + 7);
+            fifth = (checkIfValid(scaleArray, fifth)) ? fifth : (byte) (currentKey + 8);
+            midiSequenceArray[rowCounter][colCounter] = new byte[]{currentKey, third, fifth};
+            currentKey += majorChordProgression[(k + 1) % 4];
+            colCounter = (colCounter < 3) ? colCounter++ : colCounter;
+            rowCounter = (colCounter == 3) ? rowCounter++ : rowCounter;
+            colCounter = (colCounter == 3) ? (byte)0 : colCounter;
 
-    }
+        }
         System.out.println(Arrays.deepToString(midiSequenceArray));
+        return midiSequenceArray;
     }
 
-    /**Generates a monophonic MelodyTrack with the spec. bpm, key etc
-     *
-     *
+    /**
+     * Generates a monophonic MelodyTrack with the spec. bpm, key etc
      *
      * @param bpm
      * @param key
      * @param numberOfBars
      */
-    private static makeMelodyTrack(byte bpm, byte key, byte numberOfBars){
-
-
-
-
+    private static void makeMelodyTrack(byte bpm, byte key, byte numberOfBars) {
 
 
     }
 
-    /**Returns true if note is a part of the scale
+    /**
+     * Returns true if note is a part of the scale
      *
      * @param scaleArray
      * @param note
      * @return true if valid note from scale and false if not
      */
-    private boolean checkIfValid(byte[] scaleArray, byte note){
+    private static boolean checkIfValid(byte[] scaleArray, byte note) {
         boolean isValid = false;
         byte counter = 0;
 
-        while(!isValid || counter < scaleArray.length){
+        while (!isValid || counter < scaleArray.length) {
 
             isValid = (note == scaleArray[counter]);
 
             counter++;
 
 
-
         }
 
         return isValid;
 
+
+    }
 
 }
