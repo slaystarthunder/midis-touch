@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 public class ChordTrack extends Track{
 
 
@@ -14,6 +15,15 @@ public class ChordTrack extends Track{
     public ChordTrack(byte bpm, byte key, byte numberOfBars, byte[][][] midiSequenceArray){
         super(bpm, key, numberOfBars);
         super.setMidiSequence(midiSequenceArray);
+=======
+public class ChordTrack {
+    private byte key, bpm, numberOfBars;
+    byte[][][] midiSequenceArray;
+
+    public ChordTrack(byte keyIn, byte bpmIn, byte numberOfBarsIn, byte[][][] midiSequenceArrayIn){
+        super(bpmIn,keyIn,numberOfBarsIn);
+        super.setMidiSequence(midiSequenceArrayIn);
+>>>>>>> Stashed changes
 
 
 
@@ -23,4 +33,8 @@ public class ChordTrack extends Track{
 
 
 
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

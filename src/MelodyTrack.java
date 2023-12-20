@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 public class MelodyTrack extends Track{
 
     /**Generates a monophonic melody track, given a MIDI-sequence array from
@@ -13,6 +14,16 @@ public class MelodyTrack extends Track{
     public MelodyTrack(byte bpm, byte key, byte numberOfBars, byte[][][] midiSequenceArray){
         super(bpm, key, numberOfBars);
         super.setMidiSequence(midiSequenceArray);
+=======
+public class MelodyTrack extends Track {
+    private byte key, bpm, numberOfBars;
+    byte[][][] midiSequenceArray;
+
+    public MelodyTrack(byte keyIn, byte bpmIn, byte numberOfBarsIn, byte[][][] midiSequenceArrayIn){
+       super(bpmIn,keyIn,numberOfBarsIn);
+       super.setMidiSequence(midiSequenceArrayIn);
+
+>>>>>>> Stashed changes
 
 
 
@@ -21,4 +32,8 @@ public class MelodyTrack extends Track{
 
 
 
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
