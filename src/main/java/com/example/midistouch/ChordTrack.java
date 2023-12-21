@@ -1,3 +1,4 @@
+package com.example.midistouch;
 
 public class ChordTrack extends Track {
 
@@ -13,6 +14,7 @@ public class ChordTrack extends Track {
      */
     public ChordTrack(byte bpm, byte key, byte numberOfBars, byte[][][] midiSequenceArray) {
         super(bpm, key, numberOfBars);
+        setMidiSequence(midiSequenceArray);
 
 
 

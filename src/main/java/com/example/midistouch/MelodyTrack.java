@@ -1,3 +1,4 @@
+package com.example.midistouch;
 
 public class MelodyTrack extends Track {
 

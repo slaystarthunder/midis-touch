@@ -1,3 +1,5 @@
+package com.example.midistouch;
+
 public class Song{
     private Track[] chordAndMelody;
 

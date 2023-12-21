@@ -1,6 +1,9 @@
-import java.util.Arrays;
+package com.example.midistouch;
 
-public class SongGenerator/*(TrackGenerator?)*/ {
+import java.util.Arrays;
+import java.util.Random;
+
+public class TrackGenerator/*(TrackGenerator?)*/ {
     /*What do we do?
 
 
@@ -56,8 +59,9 @@ public class SongGenerator/*(TrackGenerator?)*/ {
      */
 
 
-    public static void generateSong(byte bpm, byte key, byte numberOfBars) {
+    public static Track[] generateTracks(byte bpm, byte key, byte numberOfBars) {
 
+        return new Track[]{ new ChordTrack(bpm,key,numberOfBars,TrackGenerator.makeChordTrack(bpm, key, numberOfBars)), new MelodyTrack(bpm,key,numberOfBars,TrackGenerator.makeMelodyTrack(bpm, key, numberOfBars))};
 
     }
 
@@ -103,8 +107,25 @@ public class SongGenerator/*(TrackGenerator?)*/ {
      * @param key
      * @param numberOfBars
      */
-    private static void makeMelodyTrack(byte bpm, byte key, byte numberOfBars) {
+    private static byte[][][] makeMelodyTrack(byte bpm, byte key, byte numberOfBars) {
+        Random rand = new Random();
+        byte[] majorChordProgression = {(byte) 0, (byte) 3, (byte) 4, (byte) 0};
+        byte[] scaleArray = {key, (byte) (key + 2), (byte) (key + 4), (byte) (key + 5), (byte) (key + 7), (byte) (key + 9), (byte) (key + 11)};
+        byte[][][] midiSequenceArray = new byte[4][4][1];
+        byte currentKey = key;
+        byte index = 0;
+        for(byte c = 0 ; c < numberOfBars ; c++){
+            index += rand.nextInt(1, scaleArray.length-1);
+            index = (byte) (index % (scaleArray.length-1));
+            midiSequenceArray[c][c%4][0] = scaleArray[index];
 
+
+
+
+
+
+        }
+        return midiSequenceArray;
 
     }
 
